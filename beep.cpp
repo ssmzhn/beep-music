@@ -46,6 +46,7 @@ int main(int argc,char* argv[]){
 			else if(s=="6+")beep0=1760;
 			else if(s=="7b+"||s=="6#+")beep0=1865;
 			else if(s=="7+")beep0=1976;
+			else printf("读取乐谱错误，请检查乐谱\n");
 		}
 		else break;
 		if(cin>>b)beep1=b*bpm;
