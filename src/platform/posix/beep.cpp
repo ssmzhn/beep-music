@@ -7,6 +7,7 @@ int main(int argc,char* argv[]){
 	const int bpm=300;
 	int i=0;
 	float beep0,beep1;
+	cout << bpm<<" ";
 	while(true){
 		if(cin>>s){
 			if(s=="1-")beep0=262;
@@ -50,7 +51,7 @@ int main(int argc,char* argv[]){
 		else break;
 		if(cin>>b)beep1=b*bpm;
 		else break;
-		cout <<bpm<<' '<< beep0 << ' ' << b*2<< ' ';
+		cout << beep0 << ' ' << b*2<< ' ';
 		i++;
 	}
 	return 0;
