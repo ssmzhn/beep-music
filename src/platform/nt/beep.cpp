@@ -1,58 +1,83 @@
 #include<iostream>
+#include<windows.h>
 using namespace std;
-string s;
-float b;
+int tone;
+//bool isTone=false;
+float m[]={0,0,0,0,0,262,277,294,311,330,349,370,392,415,440,466,494,532,554,587,622,659,699,740,784,831,880,932,988,1047,1109,1175,1245,1319,1397,1480,1568,1661,1760,1865,1976,0,0,0,0,0,0};
+
+float* changeTone(float* before,int tone){
+	if(tone==0)return before;
+	return before+tone;
+}
+
 int main(int argc,char* argv[]){
 	freopen(argv[1],"r",stdin);
-	const int bpm=300;
-	int i=0;
-	float beep0,beep1;
-	cout << bpm<<" ";
+	int bpm;
+	string s;
+	float *beep0,beep1,time;
+	cin >> tone;
+	cin >> bpm;
+	cout << bpm << " ";
 	while(true){
 		if(cin>>s){
-			if(s=="1-")beep0=262;
-			else if(s=="1#-"||s=="2b-")beep0=277;
-			else if(s=="2-")beep0=294;
-			else if(s=="2#-"||s=="3b-")beep0=311;
-			else if(s=="3-")beep0=330;
-			else if(s=="4-")beep0=349;
-			else if(s=="4#-"||s=="5b-")beep0=370;
-			else if(s=="5-")beep0=392;
-			else if(s=="5#-"||s=="6b-")beep0=415;
-			else if(s=="6-")beep0=440;
-			else if(s=="7b-"||s=="6#-")beep0=466;
-			else if(s=="7-")beep0=494;
-			else if(s=="1")beep0=532;
-			else if(s=="1#"||s=="2b")beep0=554;
-			else if(s=="2")beep0=587;
-			else if(s=="2#"||s=="3b")beep0=622;
-			else if(s=="3")beep0=659;
-			else if(s=="4")beep0=699;
-			else if(s=="4#"||s=="5b")beep0=740;
-			else if(s=="5")beep0=784;
-			else if(s=="5#"||s=="6b")beep0=831;
-			else if(s=="6")beep0=880;
-			else if(s=="7b"||s=="6#")beep0=932;
-			else if(s=="7")beep0=988;
-			else if(s=="1+")beep0=1047;
-			else if(s=="1#+"||s=="2b+")beep0=1109;
-			else if(s=="2+")beep0=1175;
-			else if(s=="2#+"||s=="3b+")beep0=1245;
-			else if(s=="3+")beep0=1319;
-			else if(s=="4+")beep0=1397;
-			else if(s=="4#+"||s=="5b+")beep0=1480;
-			else if(s=="5+")beep0=1568;
-			else if(s=="5#+"||s=="6b+")beep0=1661;
-			else if(s=="6+")beep0=1760;
-			else if(s=="7b+"||s=="6#+")beep0=1865;
-			else if(s=="7+")beep0=1976;
-			else printf("读取乐谱错误，请检查乐谱\n");
+			if(s=="C")tone=0;
+			else if(s=="#C"){tone=1;continue;}
+			else if(s=="D"){tone=2;continue;}
+			else if(s=="#D"){tone=3;continue;}
+			else if(s=="E"){tone=4;continue;}
+			else if(s=="F"){tone=5;continue;}
+			else if(s=="#F"){tone=6;continue;}
+			else if(s=="B"){tone=-1;continue;}
+			else if(s=="bB"){tone=-2;continue;}
+			else if(s=="A"){tone=-3;continue;}
+			else if(s=="bA"){tone=-4;continue;}
+			else if(s=="G"){tone=-5;continue;}
+			else if(s=="1-")beep0=&m[5];
+			else if(s=="1#-"||s=="2b-")beep0=&m[6];
+			else if(s=="2-")beep0=&m[7];
+			else if(s=="2#-"||s=="3b-")beep0=&m[8];
+			else if(s=="3-")beep0=&m[9];
+			else if(s=="4-")beep0=&m[10];
+			else if(s=="4#-"||s=="5b-")beep0=&m[11];
+			else if(s=="5-")beep0=&m[12];
+			else if(s=="5#-"||s=="6b-")beep0=&m[13];
+			else if(s=="6-")beep0=&m[14];
+			else if(s=="7b-"||s=="6#-")beep0=&m[15];
+			else if(s=="7-")beep0=&m[16];
+			else if(s=="1")beep0=&m[17];
+			else if(s=="1#"||s=="2b")beep0=&m[18];
+			else if(s=="2")beep0=&m[19];
+			else if(s=="2#"||s=="3b")beep0=&m[20];
+			else if(s=="3")beep0=&m[21];
+			else if(s=="4")beep0=&m[22];
+			else if(s=="4#"||s=="5b")beep0=&m[23];
+			else if(s=="5")beep0=&m[24];
+			else if(s=="5#"||s=="6b")beep0=&m[25];
+			else if(s=="6")beep0=&m[26];
+			else if(s=="7b"||s=="6#")beep0=&m[27];
+			else if(s=="7")beep0=&m[28];
+			else if(s=="1+")beep0=&m[29];
+			else if(s=="1#+"||s=="2b+")beep0=&m[30];
+			else if(s=="2+")beep0=&m[31];
+			else if(s=="2#+"||s=="3b+")beep0=&m[32];
+			else if(s=="3+")beep0=&m[33];
+			else if(s=="4+")beep0=&m[34];
+			else if(s=="4#+"||s=="5b+")beep0=&m[35];
+			else if(s=="5+")beep0=&m[36];
+			else if(s=="5#+"||s=="6b+")beep0=&m[37];
+			else if(s=="6+")beep0=&m[38];
+			else if(s=="7b+"||s=="6#+")beep0=&m[39];
+			else if(s=="7+")beep0=&m[40];
+			else {
+				cerr<<"读取乐谱错误，请检查乐谱\n";
+				return 1;
+			}
 		}
 		else break;
-		if(cin>>b)beep1=b*bpm;
+		if(cin>>time)beep1=time*bpm;
 		else break;
-		cout << beep0 << ' ' << b*2<< ' ';
-		i++;
+		//cout << *changeTone(beep0,tone) << ' ' << time<< ' ';
+		Beep(*changeTone(beep0,tone),60000.0/time);
 	}
 	return 0;
 }

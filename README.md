@@ -13,9 +13,24 @@ python src/platform/posix/start.py <乐谱.txt>
 ```
 其中：`乐谱.txt`是您想播放的乐谱文件。
 
-### Windows （摆烂中）
+### Windows （未测试，不保证可用）
 > Windows is a piece of SHIT!  
 > -- Chi\_Tang
+
+使用方法很简单。
+
+只需用`g++`编译`src/platform/nt/beep.cpp`：
+
+```shell
+g++ src/platform/nt/beep.cpp
+```
+
+然后运行：
+```shell
+a.exe <乐谱.txt>
+```shell
+
+即可。
 
 ## 乐谱格式
 一个 txt 文件。  
