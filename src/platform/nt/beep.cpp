@@ -17,7 +17,6 @@ int main(int argc,char* argv[]){
 	float *beep0,beep1,time;
 	cin >> tone;
 	cin >> bpm;
-	cout << bpm << " ";
 	while(true){
 		if(cin>>s){
 			if(s=="C")tone=0;
@@ -77,7 +76,7 @@ int main(int argc,char* argv[]){
 		if(cin>>time)beep1=time*bpm;
 		else break;
 		//cout << *changeTone(beep0,tone) << ' ' << time<< ' ';
-		Beep(*changeTone(beep0,tone),60000.0/time);
+		Beep(*changeTone(beep0,tone),60000.0/bpm*time);
 	}
 	return 0;
 }
