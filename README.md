@@ -28,7 +28,7 @@ g++ src/platform/nt/beep.cpp
 然后运行：
 ```shell
 a.exe <乐谱.txt>
-```shell
+```
 
 即可。
 
