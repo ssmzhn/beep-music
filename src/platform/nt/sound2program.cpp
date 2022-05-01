@@ -17,7 +17,7 @@ int main(int argc,char* argv[]){
 	float *beep0,beep1,time;
 	cin >> tone;
 	cin >> bpm;
-	printf("include<windows.h>\nusing namespace std;\nint main(){\n");
+	printf("#include<windows.h>\nusing namespace std;\nint main(){\n");
 	while(true){
 		if(cin>>s){
 			if(s=="C")tone=0;
