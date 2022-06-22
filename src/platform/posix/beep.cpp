@@ -3,8 +3,9 @@ using namespace std;
 int tone;
 //bool isTone=false;
 float m[]={0,0,0,0,0,262,277,294,311,330,349,370,392,415,440,466,494,532,554,587,622,659,699,740,784,831,880,932,988,1047,1109,1175,1245,1319,1397,1480,1568,1661,1760,1865,1976,0,0,0,0,0,0};
-
+float empty=0;
 float* changeTone(float* before,int tone){
+	if(*before==0)return before;
 	if(tone==0)return before;
 	return before+tone;
 }
@@ -32,6 +33,7 @@ int main(int argc,char* argv[]){
 			else if(s=="A"){tone=-3;continue;}
 			else if(s=="bA"){tone=-4;continue;}
 			else if(s=="G"){tone=-5;continue;}
+			else if(s=="0")beep0=&empty;
 			else if(s=="1-")beep0=&m[5];
 			else if(s=="1#-"||s=="2b-")beep0=&m[6];
 			else if(s=="2-")beep0=&m[7];
